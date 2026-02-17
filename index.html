@@ -15,15 +15,24 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#galeria">Galeria</a></li>
-            <li><a href="#pacotes">Pacotes de Ilustrações</a></li>
-            <li><a href="#termos">Termos de Serviço</a></li>
-            <li><a href="#orçamento">Orçamento</a></li>
-        </ul>
+    <nav class="navbar" id="navBar">
+        <div class="nav-inner">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#pacotes">Pacotes de Ilustrações</a></li>
+                <li><a href="#termos">Termos de Serviço</a></li>
+                <li><a href="#orçamento">Orçamento</a></li>
+            </ul>
+        </div>
     </nav>
+
 
     <img id="inicio" class="hero-img" src="assets/capa.webp" alt="hero">
     <section class="hero">
@@ -363,6 +372,7 @@
     </section>
 
 
+    <script src="./main.js"></script>
 </body>
 
 </html>
