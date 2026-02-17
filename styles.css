@@ -7,6 +7,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Elegante';
+    src: url('./fonts/elegante/Elegante-Classica.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -24,13 +31,14 @@ body {
 }
 
 section {
-    scroll-margin-top: 40px;
+    scroll-margin-top: 80px;
 }
 
-h1,
-h2,
-h3 {
+h1 {
     font-family: 'Elnora', serif;
+    font-size: 120px;
+    font-weight: 100;
+    text-transform: uppercase;
 }
 
 /* ---------- */
@@ -58,6 +66,9 @@ h3 {
 }
 
 .nav-links {
+    font-family: 'Playfair', serif;
+    font-weight: 400;
+    font-size: 20px;
     display: flex;
     gap: 40px;
     list-style: none;
@@ -111,7 +122,9 @@ h3 {
 }
 
 .hero-text p {
-    font-size: 18px;
+    font-family: 'Elegante';
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .hero-image img {
@@ -125,28 +138,30 @@ h3 {
 .about {
     max-width: 500px;
     margin-left: 10%;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.about h1 {
-    font-family: 'Cardo';
-    margin-bottom: 5px;
+.about h2 {
+    font-family: 'Elegante';
+    margin-bottom: 10px;
 }
 
 .about p {
     margin-bottom: 10px;
+    font-family: 'Cardo';
+    font-size: 20px;
 }
 
 /* ---------- */
 /* Gallery */
 /* ---------- */
 .gallery {
-    padding: 0px 40px;
+    margin-top: 40px;
+    /* padding: 0px 40px; */
     text-align: center;
 }
 
 .gallery h1 {
-    font-size: 48px;
     margin-bottom: 40px;
 }
 
@@ -188,12 +203,11 @@ h3 {
 /* Plans */
 /* ---------- */
 .plans {
-    padding: 60px 40px;
+    margin-top: 80px;
     text-align: center;
 }
 
 .plans h1 {
-    font-size: 48px;
     margin-bottom: 40px;
 }
 
@@ -259,15 +273,15 @@ h3 {
 }
 
 .terms h1 {
-    font-size: 52px;
+    text-align: center;
     margin-bottom: 10px;
-    font-weight: 700;
 }
 
 .terms-subtitle {
+    text-align: center;
     font-size: 18px;
     opacity: 0.6;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 .terms-steps {
@@ -341,18 +355,18 @@ h3 {
     justify-content: center;
     align-items: center;
     /* vertical center */
-    padding: 100px 20px;
+    /* padding: 100px 20px; */
     /* extra space top & bottom */
     text-align: center;
 }
 
 .orcamento-content {
-    max-width: 800px;
+    /* max-width: 1000px; */
     width: 100%;
 }
 
 .orcamento h1 {
-    font-size: 5rem;
+    /* font-size: 5rem; */
     margin-bottom: 60px;
 }
 
