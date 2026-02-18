@@ -40,6 +40,12 @@ h1 {
     text-transform: uppercase;
 }
 
+@media (max-width: 786px) {
+    h1 {
+        font-size: 80px;
+    }
+}
+
 /* ---------- */
 /* NAV */
 /* ---------- */
@@ -203,7 +209,6 @@ h1 {
     font-size: 160px;
     margin-bottom: -20px;
     color: white;
-    /* letter-spacing: 2px; */
 }
 
 .hero-text p {
@@ -215,6 +220,24 @@ h1 {
 .hero-image img {
     width: 350px;
     border-radius: 12px;
+}
+
+@media (max-width: 786px) {
+    .hero-text h1 {
+        font-weight: 100;
+        font-size: 140px;
+        margin-bottom: -20px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 0.9;
+    }
+
+    .hero-text p {
+        text-align: center;
+        text-wrap: balance;
+    }
 }
 
 /* ---------- */
@@ -237,12 +260,23 @@ h1 {
     font-size: 20px;
 }
 
+@media (max-width: 786px) {
+    .about {
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    .about h2 {
+        text-align: center;
+    }
+}
+
 /* ---------- */
 /* Gallery */
 /* ---------- */
 .gallery {
     margin-top: 40px;
-    /* padding: 0px 40px; */
+    padding: 0px 40px;
     text-align: center;
 }
 
@@ -272,13 +306,13 @@ h1 {
     transform: scale(1.03);
 }
 
-@media (max-width: 1024px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
 
-@media (max-width: 600px) {
+
+@media (max-width: 786px) {
+    .span-2 {
+        grid-column: span 1;
+    }
+
     .gallery-grid {
         grid-template-columns: 1fr;
     }
@@ -342,6 +376,26 @@ h1 {
 
 .crossed-text {
     text-decoration: line-through;
+}
+
+@media (max-width: 786px) {
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .repeat-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .repeat-3 {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ---------- */
