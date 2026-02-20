@@ -284,11 +284,6 @@ h1 {
     margin-bottom: 40px;
 }
 
-.gallery-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
 
 .gallery-grid .template-4 {
     display: grid;
@@ -321,6 +316,10 @@ h1 {
 
 
 @media (max-width: 786px) {
+    .gallery {
+        padding: 0px 60px;
+    }
+
     .span-2 {
         grid-column: span 1;
     }
