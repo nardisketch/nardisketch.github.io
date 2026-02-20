@@ -276,7 +276,7 @@ h1 {
 /* ---------- */
 .gallery {
     margin-top: 40px;
-    padding: 0px 40px;
+    padding: 0px 80px;
     text-align: center;
 }
 
@@ -285,10 +285,21 @@ h1 {
 }
 
 .gallery-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gallery-grid .template-4 {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.gallery-grid .template-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
 }
 
 .gallery-grid img {
@@ -314,7 +325,11 @@ h1 {
         grid-column: span 1;
     }
 
-    .gallery-grid {
+    .gallery-grid .template-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid .template-3 {
         grid-template-columns: 1fr;
     }
 }
