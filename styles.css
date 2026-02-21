@@ -139,7 +139,7 @@ h1 {
         left: 0;
 
         width: 45%;
-        height: 100vh;
+        height: 100dvh;
         transform: translateX(-120%);
         z-index: 100;
 
