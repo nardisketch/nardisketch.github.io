@@ -69,3 +69,82 @@ document.addEventListener("keydown", (e) => {
     }
 
 });
+
+let scale = 1;
+let posX = 0;
+let posY = 0;
+let isDragging = false;
+let startX;
+let startY;
+
+function updateTransform() {
+    lightboxImg.style.transform =
+        `translate(${posX}px, ${posY}px) scale(${scale})`;
+}
+
+/* Zoom with mouse wheel */
+
+lightboxImg.addEventListener("wheel", (e) => {
+
+    e.preventDefault();
+
+    if (e.deltaY < 0) {
+        scale += 0.15;
+    } else {
+        scale -= 0.15;
+    }
+
+    scale = Math.max(1, Math.min(scale, 5));
+
+    updateTransform();
+
+});
+
+
+/* Drag image */
+
+lightboxImg.addEventListener("mousedown", (e) => {
+
+    e.preventDefault();
+
+    isDragging = true;
+
+    startX = e.clientX - posX;
+    startY = e.clientY - posY;
+
+});
+
+document.addEventListener("mousemove", (e) => {
+
+    if (!isDragging) return;
+
+    posX = e.clientX - startX;
+    posY = e.clientY - startY;
+
+    updateTransform();
+
+});
+
+document.addEventListener("mouseup", () => {
+
+    isDragging = false;
+
+});
+
+
+/* Reset zoom when opening new image */
+
+function showImage(index) {
+
+    current = index;
+
+    lightboxImg.src = images[current].src;
+
+    scale = 1;
+    posX = 0;
+    posY = 0;
+
+    updateTransform();
+
+    lightbox.classList.add("active");
+}

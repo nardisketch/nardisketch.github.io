@@ -127,3 +127,30 @@
 .lightbox-next {
     right: 40px;
 }
+
+/* Smooth opening animation */
+
+#lightbox {
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+#lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* smoother image appearance */
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+
+    transition: transform .15s ease;
+    cursor: grab;
+}
+
+.lightbox-img:active {
+    cursor: grabbing;
+}
