@@ -295,6 +295,7 @@ h1 {
 }
 
 .gallery-grid .template-3 {
+    margin-top: 16px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
