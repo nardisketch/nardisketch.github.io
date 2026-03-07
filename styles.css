@@ -143,6 +143,9 @@ h1 {
         transform: translateX(-120%);
         z-index: 100;
 
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+
         border-radius: 0;
 
         background: rgba(20, 20, 20, 0.3);
