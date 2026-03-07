@@ -317,7 +317,27 @@ h1 {
     transform: scale(1.03);
 }
 
+.gallery-button {
+    display: block;
+    width: fit-content;
+    margin: 60px auto 0;
 
+    padding: 12px 28px;
+
+    border: 1px solid #222;
+
+    text-decoration: none;
+    color: #222;
+
+    font-family: "Cardo", serif;
+
+    transition: all .3s ease;
+}
+
+.gallery-button:hover {
+    background: #222;
+    color: white;
+}
 
 @media (max-width: 786px) {
     .gallery {

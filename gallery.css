@@ -1,0 +1,129 @@
+.gallery-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 120px 40px;
+}
+
+.gallery-page h1 {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.gallery-nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.gallery-nav a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Cardo';
+}
+
+/* Masonry layout */
+
+.masonry-gallery {
+    column-count: 4;
+    column-gap: 20px;
+}
+
+.masonry-gallery img {
+
+    width: 100%;
+    height: auto;
+
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+
+    break-inside: avoid;
+
+    transition: transform .25s ease;
+}
+
+.masonry-gallery img:hover {
+    transform: scale(1.02);
+}
+
+/* responsive */
+
+@media (max-width:1200px) {
+    .masonry-gallery {
+        column-count: 3;
+    }
+}
+
+@media (max-width:800px) {
+    .masonry-gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width:500px) {
+    .masonry-gallery {
+        column-count: 1;
+    }
+}
+
+/* LIGHTBOX */
+
+#lightbox {
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.9);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+#lightbox.active {
+    display: flex;
+}
+
+.lightbox-img {
+
+    max-width: 90%;
+    max-height: 90%;
+
+    border-radius: 8px;
+}
+
+.lightbox-close {
+
+    position: absolute;
+    top: 30px;
+    right: 40px;
+
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 60px;
+
+    cursor: pointer;
+
+    padding: 20px;
+}
+
+.lightbox-prev {
+    left: 40px;
+}
+
+.lightbox-next {
+    right: 40px;
+}
