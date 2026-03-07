@@ -40,6 +40,8 @@
     break-inside: avoid;
 
     transition: transform .25s ease;
+
+    cursor: pointer;
 }
 
 .masonry-gallery img:hover {
