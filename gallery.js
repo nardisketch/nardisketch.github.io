@@ -9,15 +9,6 @@ const close = document.querySelector(".lightbox-close");
 
 let current = 0;
 
-function showImage(index) {
-
-    current = index;
-
-    lightboxImg.src = images[current].src;
-
-    lightbox.classList.add("active");
-}
-
 images.forEach((img, index) => {
 
     img.addEventListener("click", () => {

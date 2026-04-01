@@ -8,10 +8,7 @@ hamburger.addEventListener('click', () => {
     navBar.classList.toggle('active');
 });
 
-console.log(navLinks);
-
 navLinks.querySelectorAll("li").forEach(link => {
-    console.log(link);
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navBar.classList.remove('active');

@@ -29,7 +29,8 @@ body {
     font-family: 'Cardo', serif;
 }
 
-section {
+section,
+[id] {
     scroll-margin-top: 80px;
 }
 
@@ -341,7 +342,7 @@ h1 {
 
 @media (max-width: 786px) {
     .gallery {
-        padding: 0px 60px;
+        padding: 0px 20px;
     }
 
     .span-2 {
@@ -562,6 +563,15 @@ h1 {
 .contact-block p {
     margin: 8px 0;
     font-size: 1rem;
+}
+
+.contact-block a {
+    color: inherit;
+    opacity: 0.85;
+}
+
+.contact-block a:hover {
+    opacity: 1;
 }
 
 /* ---------- */
