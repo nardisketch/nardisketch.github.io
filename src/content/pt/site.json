@@ -1,0 +1,52 @@
+{
+  "config": {
+    "brand": "Nardi Sketch",
+    "brandLines": ["NARDI", "SKETCH"],
+    "author": "Luana Nardi",
+    "tagline": "Por Luana Nardi - Artista Conceitual e Designer Gráfica",
+
+    "aboutHeading": "Artes personalizadas para D&D <br> e RPG de mesa",
+    "aboutParagraphs": [
+      "Bem-vindo ao <i>Nardi Sketch</i>",
+      "Sou Luana Nardi, artista conceitual e designer gráfica. Aqui você encontra um universo de possibilidades para dar vida aos seus personagens com personalidade, autenticidade e narrativa forte.",
+      "Conheça os planos e solicite seu orçamento."
+    ],
+
+    "whatsapp": {
+      "number": "5561996584258",
+      "display": "61 99658-4258",
+      "prefill": "Olá! Gostaria de solicitar um orçamento."
+    },
+    "email": "nardisketch@gmail.com",
+
+    "social": [
+      { "label": "Instagram", "handle": "@nardi_sketch", "url": "https://www.instagram.com/nardi_sketch" },
+      { "label": "LinkedIn", "handle": "Luana Nardi", "url": "https://www.linkedin.com/in/luana-nardi" },
+      { "label": "Behance", "handle": "behance.net/luananardisantiago", "url": "https://www.behance.net/luananardisantiago" },
+      { "label": "ArtStation", "handle": "artstation.com/luana_nardi", "url": "https://www.artstation.com/luana_nardi" }
+    ],
+
+    "ui": {
+      "navLinks": [
+        { "label": "Início", "href": "#inicio" },
+        { "label": "Galeria", "href": "#galeria" },
+        { "label": "Pacotes de Ilustrações", "href": "#pacotes" },
+        { "label": "Termos de Serviço", "href": "#termos" },
+        { "label": "Orçamento", "href": "#orcamento" }
+      ],
+      "galleryHeading": "GALERIA",
+      "galleryButton": "Ver Galeria Completa",
+      "galleryPageHeading": "Galeria",
+      "galleryBackLabel": "← Voltar",
+      "packagesSimplesHeading": "PACOTES SIMPLES",
+      "packagesAdicionaisHeading": "ADICIONAIS",
+      "packagesEspeciaisHeading": "PACOTES ESPECIAIS",
+      "termsHeading": "Termos de Serviço",
+      "termsSubtitle": "Como funciona",
+      "contactHeading": "SOLICITE SEU PEDIDO",
+      "contactBlock1": "ENTRE EM CONTATO",
+      "contactBlock2": "ACOMPANHE NAS REDES",
+      "whatsappAriaLabel": "Falar no WhatsApp"
+    }
+  }
+}

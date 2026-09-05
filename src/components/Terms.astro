@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { getSite } from '../lib/site';
+
+const site = await getSite();
+
+const all = await getCollection('terms');
+const of = (kind: 'step' | 'info') =>
+  all.filter((e) => e.data.kind === kind).sort((a, b) => a.data.order - b.data.order);
+
+const steps = of('step');
+const info = of('info');
+---
+
+<section id="termos" class="terms">
+  <div class="terms-container">
+    <h1>{site.ui.termsHeading}</h1>
+    <p class="terms-subtitle">{site.ui.termsSubtitle}</p>
+
+    <div class="terms-steps">
+      {steps.map((e) => (
+        <div class="step">
+          <span class="step-number">{e.data.marker}</span>
+          <div>
+            <h4>{e.data.title}</h4>
+            <p>{e.data.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="terms-info">
+      {info.map((e) => (
+        <div class="info-item">
+          <h4>{e.data.marker} {e.data.title}</h4>
+          <p>{e.data.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

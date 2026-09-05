@@ -1,0 +1,25 @@
+---
+import { getSite } from '../lib/site';
+
+const site = await getSite();
+const whatsappUrl = `https://wa.me/${site.whatsapp.number}`;
+---
+
+<section class="orcamento">
+  <div id="orcamento" class="orcamento-content">
+    <h1>{site.ui.contactHeading}</h1>
+
+    <div class="contact-block">
+      <h2>{site.ui.contactBlock1}</h2>
+      <p>WhatsApp: <a href={whatsappUrl} target="_blank" rel="noopener">{site.whatsapp.display}</a></p>
+      <p>E-mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+    </div>
+
+    <div class="contact-block">
+      <h2>{site.ui.contactBlock2}</h2>
+      {site.social.map((s) => (
+        <p>{s.label}: <a href={s.url} target="_blank" rel="noopener">{s.handle}</a></p>
+      ))}
+    </div>
+  </div>
+</section>

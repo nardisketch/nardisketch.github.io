@@ -1,0 +1,10 @@
+---
+import { getSite } from '../lib/site';
+
+const site = await getSite();
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <p>© {year} {site.author}</p>
+</footer>

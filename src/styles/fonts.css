@@ -1,0 +1,35 @@
+/* Self-hosted webfonts (replaces the old Google Fonts CDN <link> tags). */
+
+/* Cardo — body copy (latin subsets, matching the old Google Fonts delivery:
+   Cardo:wght@400;700 — roman only, so <i> renders as synthesized oblique). */
+@import '@fontsource/cardo/latin-400.css';
+@import '@fontsource/cardo/latin-ext-400.css';
+@import '@fontsource/cardo/latin-700.css';
+@import '@fontsource/cardo/latin-ext-700.css';
+
+/* Playfair (variable) — navigation links */
+@import '@fontsource-variable/playfair/wght.css';
+
+/* TODO(licensing): Elnora & Elegante are Burntilldead "Demo Version" fonts.
+   A paid commercial license is required before any commercial use of this site.
+   See src/assets/fonts/elnora/readme.txt */
+
+@font-face {
+  font-family: 'Elnora';
+  src:
+    url('../assets/fonts/elnora/Elnora-DemoRegular.woff2') format('woff2'),
+    url('../assets/fonts/elnora/Elnora-DemoRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Elegante';
+  src:
+    url('../assets/fonts/elegante/Elegante-Classica.woff2') format('woff2'),
+    url('../assets/fonts/elegante/Elegante-Classica.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import capa from '../assets/capa.webp';
+import { getSite } from '../lib/site';
+
+const site = await getSite();
+---
+
+<Image
+  id="inicio"
+  class="hero-img"
+  src={capa}
+  alt=""
+  widths={[800, 1415]}
+  sizes="100vw"
+  loading="eager"
+  fetchpriority="high"
+/>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>
+      {site.brandLines.map((line, i) => (
+        <>{i > 0 && ' '}<span>{line}</span></>
+      ))}
+    </h1>
+    <p>{site.tagline}</p>
+  </div>
+
+  <slot />
+</section>
