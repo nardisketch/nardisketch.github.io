@@ -17,4 +17,7 @@
   --muted: #6d4f4f;     /* gallery button text */
 
   --wa-green: #25d366;  /* WhatsApp float */
+
+  --button-fill: #f4f1ea;        /* "Ver Galeria Completa" CTA */
+  --button-fill-hover: #ffffff;
 }
