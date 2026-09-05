@@ -7,9 +7,7 @@ import { getSite } from '../lib/site';
 
 const site = await getSite();
 
-const featured = (await getCollection('gallery'))
-  .filter((e) => e.data.preview !== null)
-  .sort((a, b) => a.data.preview!.order - b.data.preview!.order);
+const featured = (await getCollection('featured')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section id="destaques" class="gallery">
@@ -17,7 +15,7 @@ const featured = (await getCollection('gallery'))
 
   <div class="featured-grid">
     {featured.map((e) => (
-      <div class:list={['gallery-item', e.data.preview!.span === 2 && 'span-2']}>
+      <div class:list={['gallery-item', e.data.span === 2 && 'span-2']}>
         <Image
           src={galleryImage(e.id)}
           alt={e.data.alt}

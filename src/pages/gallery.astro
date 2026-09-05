@@ -2,20 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MasonryGallery from '../components/MasonryGallery.astro';
 import Lightbox from '../components/Lightbox.tsx';
-import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
-import { galleryImage } from '../lib/galleryImages';
+import { galleryImages } from '../lib/galleryImages';
 import { withBase } from '../lib/withBase';
 import { getSite } from '../lib/site';
 import '../styles/lightbox.css';
 
 const site = await getSite();
 
-const entries = (await getCollection('gallery')).sort((a, b) => a.data.order - b.data.order);
 const images = await Promise.all(
-  entries.map(async (e) => {
-    const optimized = await getImage({ src: galleryImage(e.id), format: 'webp', quality: 85 });
-    return { src: optimized.src, alt: e.data.alt };
+  galleryImages.map(async ({ image }) => {
+    const optimized = await getImage({ src: image, format: 'webp', quality: 85 });
+    return { src: optimized.src, alt: 'Ilustração — Nardi Sketch' };
   }),
 );
 ---

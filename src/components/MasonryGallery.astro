@@ -1,16 +1,13 @@
 ---
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import { galleryImage } from '../lib/galleryImages';
-
-const images = (await getCollection('gallery')).sort((a, b) => a.data.order - b.data.order);
+import { galleryImages } from '../lib/galleryImages';
 ---
 
 <div class="masonry-gallery">
-  {images.map((e, i) => (
+  {galleryImages.map(({ image }, i) => (
     <Image
-      src={galleryImage(e.id)}
-      alt={e.data.alt}
+      src={image}
+      alt="Ilustração — Nardi Sketch"
       widths={[300, 600]}
       sizes="(max-width: 500px) 100vw, (max-width: 800px) 50vw, (max-width: 1200px) 33vw, 25vw"
       loading="lazy"
