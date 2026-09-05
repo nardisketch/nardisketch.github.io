@@ -1,22 +1,15 @@
 import { defineCollection, z } from 'astro:content';
 import { file } from 'astro/loaders';
 
-/* Single source of truth for both the home preview grid and the full gallery
-   page. `preview: null` means the image is not shown on the home page. */
-const gallery = defineCollection({
-  loader: file('src/content/pt/gallery.json'),
+/* The handful of images shown in the "Destaques" strip on the home page.
+   The full gallery page is NOT driven by this — it auto-includes every file
+   in src/assets/gallery/ (see src/lib/galleryImages.ts). */
+const featured = defineCollection({
+  loader: file('src/content/pt/featured.json'),
   schema: z.object({
+    order: z.number().int(), // display order in the strip
     alt: z.string().default('Ilustração — Nardi Sketch'),
-    order: z.number().int(), // order on the full /gallery.html page
-    preview: z
-      .object({
-        order: z.number().int(), // order within its preview group on the home page
-        group: z.enum(['main', 'wide']).default('main'), // main = .template-4, wide = .template-3
-        span: z.union([z.literal(1), z.literal(2)]).default(1), // .span-2 modifier
-        portrait: z.boolean().default(false), // .portrait modifier
-      })
-      .nullable()
-      .default(null),
+    span: z.union([z.literal(1), z.literal(2)]).default(1), // optional: span 2 columns
   }),
 });
 
@@ -87,4 +80,4 @@ const site = defineCollection({
   }),
 });
 
-export const collections = { gallery, packages, terms, site };
+export const collections = { featured, packages, terms, site };

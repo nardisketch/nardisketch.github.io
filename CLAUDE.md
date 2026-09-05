@@ -39,30 +39,33 @@ Node 22 (`.nvmrc`). No test suite. No linter configured.
   for the hamburger menu.
 - **`src/content/pt/`** + **`src/content.config.ts`** — content collections (Zod-typed
   JSON), the single source of truth for editable content:
-  - `gallery.json` — drives **both** the home preview grid and the full gallery page.
-    Each entry: `order` (full gallery), and `preview` (`null` = hidden on home; else
-    `{ order, group: 'main'|'wide', span: 1|2, portrait }`).
+  - `featured.json` — the ~5 images shown in the home-page **Destaques** strip
+    (`{ id, order, span?, alt? }`). The full gallery page is NOT listed here; it
+    auto-includes every file in `src/assets/gallery/` (see `src/lib/galleryImages.ts`).
   - `packages.json` — `section: 'simples'|'adicionais'|'especiais'`, `hidden` keeps an
     item in data without rendering it (the old commented-out "PACOTES ESPECIAIS" block).
   - `terms.json` — `kind: 'step'|'info'`, ordered.
   - `site.json` — singleton (`id: config`): brand, about copy, WhatsApp/email/socials,
     and a `ui` object holding section headings and nav labels.
-- **`src/lib/`** — `site.ts` (`getSite()`), `galleryImages.ts` (`galleryImage(id)` maps
-  a content id like `"001"` to `src/assets/gallery/001.png` via `import.meta.glob`),
-  `withBase.ts` (`withBase(path)` for hand-written links / `public/` files — NOT for
-  `<Image>` or hash anchors).
+- **`src/lib/`** — `site.ts` (`getSite()`); `galleryImages.ts` (`galleryImages` — every
+  file in `src/assets/gallery/`, sorted by name, via `import.meta.glob`; `galleryImage(id)`
+  looks one up for the Destaques strip); `withBase.ts` (`withBase(path)` for hand-written
+  links / `public/` files — NOT for `<Image>` or hash anchors).
 - **`src/styles/`** — global CSS, imported by `BaseLayout.astro` in order
   `tokens.css` → `fonts.css` → `global.css`. `lightbox.css` is imported only by
   `gallery.astro`. `tokens.css` holds color custom properties; `@media` breakpoints are
   literal (`600px`, `768px`, plus the masonry cascade `1200/800/500`).
-- **`src/assets/`** — `capa.webp` (hero), `gallery/001–017.png`, `fonts/` (self-hosted
+- **`src/assets/`** — `capa.webp` (hero), `gallery/*.png` (the full gallery), `fonts/` (self-hosted
   Elnora + Elegante, woff2 + ttf fallback). Images are served through Astro `<Image>` /
   `getImage()` as responsive WebP.
 
 ## Common tasks
 
-- **Add / remove artwork:** drop `NNN.png` in `src/assets/gallery/`, add a line to
-  `src/content/pt/gallery.json` (set `preview: null` to keep it off the home page).
+- **Add / remove artwork (full gallery):** just drop / delete an image file in
+  `src/assets/gallery/` (`.png/.jpg/.webp/.avif`). Files sort by name — zero-pad so
+  `010` comes after `009` (`018.png`, `019.png`, …).
+- **Change the home-page Destaques strip:** edit `src/content/pt/featured.json` — the
+  `id` is the file stem, `order` sets position. Keep it to ~5.
 - **Change prices / packages / terms / contact:** edit the relevant file in
   `src/content/pt/`. Schemas in `src/content.config.ts` validate at build.
 - **Edit section headings / nav labels:** `src/content/pt/site.json` → `ui`.
