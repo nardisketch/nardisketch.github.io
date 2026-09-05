@@ -1,24 +1,22 @@
 ---
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
+import featured from '../data/featured.json';
 import { galleryImage } from '../lib/galleryImages';
 import { withBase } from '../lib/withBase';
 import { getSite } from '../lib/site';
 
 const site = await getSite();
-
-const featured = (await getCollection('featured')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section id="destaques" class="gallery">
   <h1>{site.ui.galleryHeading}</h1>
 
   <div class="featured-grid">
-    {featured.map((e) => (
-      <div class:list={['gallery-item', e.data.span === 2 && 'span-2']}>
+    {(featured as string[]).map((name) => (
+      <div class="gallery-item">
         <Image
-          src={galleryImage(e.id)}
-          alt={e.data.alt}
+          src={galleryImage(name)}
+          alt="Ilustração — Nardi Sketch"
           widths={[300, 600]}
           sizes="(max-width: 600px) 50vw, (max-width: 900px) 33vw, 20vw"
         />

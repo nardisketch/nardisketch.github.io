@@ -1,17 +1,9 @@
 import { defineCollection, z } from 'astro:content';
 import { file } from 'astro/loaders';
 
-/* The handful of images shown in the "Destaques" strip on the home page.
-   The full gallery page is NOT driven by this — it auto-includes every file
-   in src/assets/gallery/ (see src/lib/galleryImages.ts). */
-const featured = defineCollection({
-  loader: file('src/content/pt/featured.json'),
-  schema: z.object({
-    order: z.number().int(), // display order in the strip
-    alt: z.string().default('Ilustração — Nardi Sketch'),
-    span: z.union([z.literal(1), z.literal(2)]).default(1), // optional: span 2 columns
-  }),
-});
+/* Gallery image order and the home "Destaques" selection are plain ordered
+   filename lists, not collections — see src/data/{gallery,featured}.json and
+   src/lib/galleryImages.ts. */
 
 const packages = defineCollection({
   loader: file('src/content/pt/packages.json'),
@@ -80,4 +72,4 @@ const site = defineCollection({
   }),
 });
 
-export const collections = { featured, packages, terms, site };
+export const collections = { packages, terms, site };

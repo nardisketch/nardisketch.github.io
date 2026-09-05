@@ -38,19 +38,22 @@ Node 22 (`.nvmrc`). No test suite. No linter configured.
   `client:idle`, on the gallery page only). `Nav.astro` carries a tiny inline `<script>`
   for the hamburger menu.
 - **`src/content/pt/`** + **`src/content.config.ts`** — content collections (Zod-typed
-  JSON), the single source of truth for editable content:
-  - `featured.json` — the ~5 images shown in the home-page **Destaques** strip
-    (`{ id, order, span?, alt? }`). The full gallery page is NOT listed here; it
-    auto-includes every file in `src/assets/gallery/` (see `src/lib/galleryImages.ts`).
+  JSON), the single source of truth for editable text content:
   - `packages.json` — `section: 'simples'|'adicionais'|'especiais'`, `hidden` keeps an
     item in data without rendering it (the old commented-out "PACOTES ESPECIAIS" block).
   - `terms.json` — `kind: 'step'|'info'`, ordered.
   - `site.json` — singleton (`id: config`): brand, about copy, WhatsApp/email/socials,
     and a `ui` object holding section headings and nav labels.
-- **`src/lib/`** — `site.ts` (`getSite()`); `galleryImages.ts` (`galleryImages` — every
-  file in `src/assets/gallery/`, sorted by name, via `import.meta.glob`; `galleryImage(id)`
-  looks one up for the Destaques strip); `withBase.ts` (`withBase(path)` for hand-written
-  links / `public/` files — NOT for `<Image>` or hash anchors).
+- **`src/data/`** — plain ordered filename lists (not collections):
+  - `gallery.json` — every image on the full gallery page, **in display order**. Array
+    position IS the order; filenames carry no ordering meaning. Files present in
+    `src/assets/gallery/` but missing here are appended at the end (with a build warning).
+  - `featured.json` — the ~5 filenames shown in the home-page **Destaques** strip.
+- **`src/lib/`** — `site.ts` (`getSite()`); `galleryImages.ts` (`galleryImages` — resolves
+  `src/data/gallery.json` against the files in `src/assets/gallery/`, in order, appending
+  any unlisted; `galleryImage(name)` looks one up by filename for the Destaques strip);
+  `withBase.ts` (`withBase(path)` for hand-written links / `public/` files — NOT for
+  `<Image>` or hash anchors).
 - **`src/styles/`** — global CSS, imported by `BaseLayout.astro` in order
   `tokens.css` → `fonts.css` → `global.css`. `lightbox.css` is imported only by
   `gallery.astro`. `tokens.css` holds color custom properties; `@media` breakpoints are
@@ -61,11 +64,13 @@ Node 22 (`.nvmrc`). No test suite. No linter configured.
 
 ## Common tasks
 
-- **Add / remove artwork (full gallery):** just drop / delete an image file in
-  `src/assets/gallery/` (`.png/.jpg/.webp/.avif`). Files sort by name — zero-pad so
-  `010` comes after `009` (`018.png`, `019.png`, …).
-- **Change the home-page Destaques strip:** edit `src/content/pt/featured.json` — the
-  `id` is the file stem, `order` sets position. Keep it to ~5.
+- **Add artwork (full gallery):** drop an image file in `src/assets/gallery/`
+  (`.png/.jpg/.webp/.avif`). It appears at the end of the gallery until you place it —
+  filenames don't affect order. Position it with `npm run gallery` (interactive) or by
+  moving its line in `src/data/gallery.json`.
+- **Remove artwork:** delete the file (and its line in `src/data/gallery.json`).
+- **Change the home-page Destaques strip:** edit `src/data/featured.json` — a list of
+  ~5 filenames, in display order.
 - **Change prices / packages / terms / contact:** edit the relevant file in
   `src/content/pt/`. Schemas in `src/content.config.ts` validate at build.
 - **Edit section headings / nav labels:** `src/content/pt/site.json` → `ui`.

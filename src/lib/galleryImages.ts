@@ -1,28 +1,48 @@
 import type { ImageMetadata } from 'astro';
+import order from '../data/gallery.json';
 
-/* Every image file in src/assets/gallery/ — the full gallery page is built
-   straight from this list, so adding artwork is just dropping a file in that
-   folder. */
+/* Every image file in src/assets/gallery/, keyed by filename. */
 const modules = import.meta.glob<{ default: ImageMetadata }>(
   '../assets/gallery/*.{png,jpg,jpeg,webp,avif}',
   { eager: true },
 );
 
-export const galleryImages: { id: string; image: ImageMetadata }[] = Object.entries(modules)
-  .map(([path, mod]) => ({
-    id: path.split('/').pop()!.replace(/\.[^.]+$/, ''),
-    image: mod.default,
-  }))
-  .sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
+const byName = new Map<string, ImageMetadata>(
+  Object.entries(modules).map(([path, mod]) => [path.split('/').pop()!, mod.default]),
+);
 
-const byId = new Map(galleryImages.map((g) => [g.id, g.image]));
+/* Display order comes from src/data/gallery.json — an explicit list of filenames.
+   Filenames themselves carry no ordering meaning. */
+const listed = (order as string[]).filter((name) => {
+  if (byName.has(name)) return true;
+  console.warn(
+    `[gallery] "${name}" is listed in src/data/gallery.json but no matching file ` +
+      `exists in src/assets/gallery/ — skipped`,
+  );
+  return false;
+});
 
-/** Look up a single gallery image by file stem, e.g. "001". Used by the
-    home-page "Destaques" strip (src/content/pt/featured.json). */
-export function galleryImage(id: string): ImageMetadata {
-  const image = byId.get(id);
+const unlisted = [...byName.keys()]
+  .filter((name) => !(order as string[]).includes(name))
+  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+if (unlisted.length > 0) {
+  console.warn(
+    `\n[gallery] ${unlisted.length} image(s) not in src/data/gallery.json, ` +
+      `appended at the end:\n${unlisted.map((n) => `  - ${n}`).join('\n')}\n`,
+  );
+}
+
+/** Full gallery, in display order. `id` is the image's filename. */
+export const galleryImages: { id: string; image: ImageMetadata }[] = [...listed, ...unlisted].map(
+  (name) => ({ id: name, image: byName.get(name)! }),
+);
+
+/** Look up one image by filename (e.g. "001.png"). Used by the home "Destaques" strip. */
+export function galleryImage(name: string): ImageMetadata {
+  const image = byName.get(name);
   if (!image) {
-    throw new Error(`No gallery image found for id "${id}" (src/assets/gallery/${id}.*)`);
+    throw new Error(`No gallery image "${name}" in src/assets/gallery/`);
   }
   return image;
 }
