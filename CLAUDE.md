@@ -24,6 +24,7 @@ npm install
 npm run dev       # http://localhost:4321/
 npm run build     # -> dist/
 npm run preview   # serves dist/
+npm run gallery   # interactive reorder tool for src/data/gallery.json
 ```
 
 Node 22 (`.nvmrc`). No test suite. No linter configured.
