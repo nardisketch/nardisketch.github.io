@@ -1,0 +1,10 @@
+---
+import { getSite } from '../lib/site';
+
+const site = await getSite();
+---
+
+<section class="about">
+  <h2 set:html={site.aboutHeading} />
+  {site.aboutParagraphs.map((p) => <p set:html={p} />)}
+</section>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  name: string;
+  price?: string;
+  priceStrike?: string;
+  priceNote?: string;
+  features?: string[];
+  paragraphs?: string[];
+}
+
+const { name, price, priceStrike, priceNote, features = [], paragraphs = [] } = Astro.props;
+---
+
+<div class="plans-item">
+  <h2>{name}</h2>
+
+  {(price || priceStrike) && (
+    <p class="price">
+      {priceStrike && (
+        <>
+          <span class="crossed-text">{priceStrike}</span>
+          <br />
+        </>
+      )}
+      {price}
+    </p>
+  )}
+
+  {features.length > 0 && (
+    <ul>
+      {features.map((f) => <li>{f}</li>)}
+    </ul>
+  )}
+
+  {paragraphs.map((p) => <p>{p}</p>)}
+
+  {priceNote && <p>{priceNote}</p>}
+</div>

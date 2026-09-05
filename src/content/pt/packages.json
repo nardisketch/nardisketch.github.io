@@ -1,0 +1,145 @@
+[
+  {
+    "id": "full-body",
+    "section": "simples",
+    "order": 1,
+    "name": "Full-Body",
+    "price": "R$ 90",
+    "features": [
+      "Corpo inteiro",
+      "Pose dinâmica",
+      "Fundo transparente e gradiente",
+      "PNG alta resolução",
+      "1 revisão no sketch",
+      "2 ajustes finais"
+    ]
+  },
+  {
+    "id": "half-body",
+    "section": "simples",
+    "order": 2,
+    "name": "Half-Body",
+    "price": "R$ 75",
+    "features": [
+      "Cintura pra cima",
+      "Pose dinâmica",
+      "Vestimenta detalhada",
+      "Foco em rosto + tronco",
+      "Fundo transparente e gradiente",
+      "PNG alta resolução",
+      "1 revisão no sketch",
+      "2 ajustes finais"
+    ]
+  },
+  {
+    "id": "bust",
+    "section": "simples",
+    "order": 3,
+    "name": "Bust",
+    "price": "R$ 50",
+    "features": [
+      "Ombros pra cima",
+      "Foco no rosto",
+      "Expressão marcante",
+      "Fundo simples",
+      "PNG alta resolução",
+      "1 revisão no sketch",
+      "2 ajustes finais"
+    ]
+  },
+  {
+    "id": "token",
+    "section": "simples",
+    "order": 4,
+    "name": "Token",
+    "price": "R$ 45",
+    "priceNote": "R$ 35 quando comprado com personagem",
+    "features": [
+      "Versão circular 280x280px",
+      "Ideal para VTTs",
+      "Background simples",
+      "PNG transparente",
+      "Pronto para Roll20/Foundry"
+    ]
+  },
+
+  {
+    "id": "personagem-adicional",
+    "section": "adicionais",
+    "order": 1,
+    "name": "Personagem Adicional",
+    "paragraphs": [
+      "+70% do valor base para ilustrações com dois personagens juntos"
+    ]
+  },
+  {
+    "id": "ficha-personalizada",
+    "section": "adicionais",
+    "order": 2,
+    "name": "Ficha Personalizada",
+    "paragraphs": ["R$ 80 standalone", "R$ 50 com full-body"]
+  },
+  {
+    "id": "revisoes-extras",
+    "section": "adicionais",
+    "order": 3,
+    "name": "Revisões Extras",
+    "paragraphs": ["+R$ 45 por rodada adicional"]
+  },
+  {
+    "id": "fundo-adicional",
+    "section": "adicionais",
+    "order": 4,
+    "name": "Fundo Adicional",
+    "paragraphs": [
+      "+30% do valor total (Até 5 dias úteis a depender da complexidade)"
+    ]
+  },
+
+  {
+    "id": "aventureiro",
+    "section": "especiais",
+    "order": 1,
+    "hidden": true,
+    "name": "Aventureiro",
+    "priceStrike": "R$ 535",
+    "price": "R$ 480",
+    "features": [
+      "Full-body base",
+      "Token personalizado",
+      "Ficha básica de brinde",
+      "2 formatos de entrega"
+    ]
+  },
+  {
+    "id": "heroi-premium",
+    "section": "especiais",
+    "order": 2,
+    "hidden": true,
+    "name": "Herói Premium",
+    "priceStrike": "R$ 645",
+    "price": "R$ 560",
+    "features": [
+      "Full-body base",
+      "Token personalizado",
+      "Ficha básica de brinde",
+      "Fundo ilustrado detalhado e fundo gradiente"
+    ]
+  },
+  {
+    "id": "party-completa",
+    "section": "especiais",
+    "order": 3,
+    "hidden": true,
+    "name": "Party Completa",
+    "priceStrike": "R$ 1.820",
+    "price": "R$ 1.680",
+    "features": [
+      "4 Full-bodie",
+      "4 Token inclusos",
+      "Fundo transparente e gradiente",
+      "Paleta coesa no grupo",
+      "Ideal para mesas de RPG"
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { galleryImage } from '../lib/galleryImages';
+import { withBase } from '../lib/withBase';
+import { getSite } from '../lib/site';
+
+const site = await getSite();
+
+const withPreview = (await getCollection('gallery')).filter((e) => e.data.preview !== null);
+const inGroup = (group: 'main' | 'wide') =>
+  withPreview
+    .filter((e) => e.data.preview!.group === group)
+    .sort((a, b) => a.data.preview!.order - b.data.preview!.order);
+
+const main = inGroup('main');
+const wide = inGroup('wide');
+---
+
+<section id="galeria" class="gallery">
+  <h1>{site.ui.galleryHeading}</h1>
+
+  <div class="gallery-grid">
+    <div class="template-4">
+      {main.map((e) => (
+        <div
+          class:list={[
+            'gallery-item',
+            e.data.preview!.span === 2 && 'span-2',
+            e.data.preview!.portrait && 'portrait',
+          ]}
+        >
+          <Image
+            src={galleryImage(e.id)}
+            alt={e.data.alt}
+            widths={[300, 600]}
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
+        </div>
+      ))}
+    </div>
+
+    <div class="template-3">
+      {wide.map((e) => (
+        <div class:list={['gallery-item', e.data.preview!.portrait && 'portrait']}>
+          <Image
+            src={galleryImage(e.id)}
+            alt={e.data.alt}
+            widths={[300, 600]}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <a href={withBase('/gallery.html')} class="gallery-button">{site.ui.galleryButton}</a>
+</section>

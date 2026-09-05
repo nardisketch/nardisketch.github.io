@@ -1,0 +1,20 @@
+/* Design tokens ported from the original styles.css literals.
+   NOTE: CSS custom properties cannot be used inside @media queries, so the
+   breakpoint values below are documentation only — the media queries in
+   global.css / lightbox.css use the literals directly:
+     --bp-plans  : 600px
+     --bp-main   : 768px   (originally an inconsistent mix of 786px / 768px)
+     --bp-masonry: 1200px / 800px / 500px  (gallery column cascade) */
+
+:root {
+  --bg: #0d0d0b;
+  --fg: #ffffff;
+
+  --surface: #161613;   /* package cards */
+  --surface-2: #111;    /* navbar */
+
+  --border: #222;       /* gallery button */
+  --muted: #6d4f4f;     /* gallery button text */
+
+  --wa-green: #25d366;  /* WhatsApp float */
+}

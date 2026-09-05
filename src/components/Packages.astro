@@ -1,0 +1,26 @@
+---
+import PackageCard from './PackageCard.astro';
+import { getCollection } from 'astro:content';
+import { getSite } from '../lib/site';
+
+const site = await getSite();
+
+const visible = (await getCollection('packages')).filter((e) => !e.data.hidden);
+const section = (name: 'simples' | 'adicionais' | 'especiais') =>
+  visible.filter((e) => e.data.section === name).sort((a, b) => a.data.order - b.data.order);
+
+const simples = section('simples');
+const adicionais = section('adicionais');
+---
+
+<section id="pacotes" class="plans">
+  <h1>{site.ui.packagesSimplesHeading}</h1>
+  <div class="plans-grid">
+    {simples.map((e) => <PackageCard {...e.data} />)}
+  </div>
+
+  <h1>{site.ui.packagesAdicionaisHeading}</h1>
+  <div class="plans-grid">
+    {adicionais.map((e) => <PackageCard {...e.data} />)}
+  </div>
+</section>

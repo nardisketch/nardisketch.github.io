@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import GalleryPreview from '../components/GalleryPreview.astro';
+import Packages from '../components/Packages.astro';
+import Terms from '../components/Terms.astro';
+import Contact from '../components/Contact.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import Footer from '../components/Footer.astro';
+import { getSite } from '../lib/site';
+
+const site = await getSite();
+---
+
+<BaseLayout title={site.brand}>
+  <Nav />
+
+  <Hero>
+    <About />
+  </Hero>
+
+  <GalleryPreview />
+  <Packages />
+  <Terms />
+  <Contact />
+
+  <WhatsAppFloat />
+  <Footer />
+</BaseLayout>

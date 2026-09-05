@@ -1,0 +1,44 @@
+---
+import { getSite } from '../lib/site';
+
+const site = await getSite();
+const { navLinks } = site.ui;
+---
+
+<div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<nav class="navbar" id="navBar">
+  <div class="nav-inner">
+    <ul class="nav-links" id="navLinks">
+      {navLinks.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  const navBar = document.getElementById('navBar');
+
+  if (hamburger && navLinks && navBar) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      navBar.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navBar.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  }
+</script>

@@ -1,0 +1,99 @@
+[
+  {
+    "id": "step-01",
+    "kind": "step",
+    "order": 1,
+    "marker": "01",
+    "title": "Briefing",
+    "body": "Será enviado um PDF com os Termos de Serviço. Você preenche um formulário detalhado com características do personagem, referências e preferências."
+  },
+  {
+    "id": "step-02",
+    "kind": "step",
+    "order": 2,
+    "marker": "02",
+    "title": "Orçamento",
+    "body": "Envio proposta com valor fechado baseado nas suas escolhas (pose, fundo, complexidade)."
+  },
+  {
+    "id": "step-03",
+    "kind": "step",
+    "order": 3,
+    "marker": "03",
+    "title": "Pagamento 50%",
+    "body": "Após aceitar, você paga metade do valor para iniciar o trabalho."
+  },
+  {
+    "id": "step-04",
+    "kind": "step",
+    "order": 4,
+    "marker": "04",
+    "title": "Sketch",
+    "body": "Crio sketch único baseado no briefing. Você pode pedir 1 rodada de ajustes."
+  },
+  {
+    "id": "step-05",
+    "kind": "step",
+    "order": 5,
+    "marker": "05",
+    "title": "Finalização",
+    "body": "Após aprovar o sketch, finalizo a arte. Você tem 2 ajustes pequenos inclusos."
+  },
+  {
+    "id": "step-06",
+    "kind": "step",
+    "order": 6,
+    "marker": "06",
+    "title": "Entrega",
+    "body": "Pagamento dos 50% restantes e envio dos arquivos finais em alta resolução."
+  },
+
+  {
+    "id": "info-prazo",
+    "kind": "info",
+    "order": 1,
+    "marker": "⏱️",
+    "title": "Prazo",
+    "body": "5-10 dias úteis após aprovação do sketch. Comunicação constante sobre o progresso."
+  },
+  {
+    "id": "info-revisoes",
+    "kind": "info",
+    "order": 2,
+    "marker": "🔄",
+    "title": "Revisões",
+    "body": "1 revisão no sketch + 2 ajustes finais inclusos. Revisões extras custam +R$ 45 cada."
+  },
+  {
+    "id": "info-pagamento",
+    "kind": "info",
+    "order": 3,
+    "marker": "💵",
+    "title": "Pagamento",
+    "body": "50% início + 50% antes da entrega. Aceito apenas Pix."
+  },
+  {
+    "id": "info-direitos",
+    "kind": "info",
+    "order": 4,
+    "marker": "📝",
+    "title": "Direitos",
+    "body": "Uso para fins pessoais ou campanha. Mantenho direitos para portfólio. Uso comercial requer licença adicional."
+  },
+  {
+    "id": "info-cancelamento",
+    "kind": "info",
+    "order": 5,
+    "marker": "❌",
+    "title": "Cancelamento",
+    "body": "Antes do sketch: reembolso de 50%. Após sketch aprovado: sem reembolso."
+  },
+  {
+    "id": "info-entrega",
+    "kind": "info",
+    "order": 6,
+    "marker": "📦",
+    "title": "Entrega",
+    "body": "PNG alta resolução (300dpi), versão com fundo transparente, formatos prontos para impressão e VTT."
+  }
+]
