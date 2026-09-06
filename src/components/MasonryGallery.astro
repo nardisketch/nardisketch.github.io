@@ -10,7 +10,8 @@ import { galleryImages } from '../lib/galleryImages';
       alt="Ilustração — Nardi Sketch"
       widths={[300, 600]}
       sizes="(max-width: 500px) 100vw, (max-width: 800px) 50vw, (max-width: 1200px) 33vw, 25vw"
-      loading="lazy"
+      loading={i < 4 ? 'eager' : 'lazy'}
+      fetchpriority={i === 0 ? 'high' : undefined}
       data-index={i}
     />
   ))}
