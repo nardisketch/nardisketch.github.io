@@ -46,9 +46,10 @@ Node 22 (`.nvmrc`). No test suite. No linter configured.
   - `site.json` — singleton (`id: config`): brand, about copy, WhatsApp/email/socials,
     and a `ui` object holding section headings and nav labels.
 - **`src/data/`** — plain ordered filename lists (not collections):
-  - `gallery.json` — every image on the full gallery page, **in display order**. Array
-    position IS the order; filenames carry no ordering meaning. Files present in
-    `src/assets/gallery/` but missing here are appended at the end (with a build warning).
+  - `gallery.json` — every image on the full gallery page, **in display order** (currently
+    newest-first). Array position IS the order; filenames carry no ordering meaning. Files
+    present in `src/assets/gallery/` but missing here are added at the **top**, newest-first
+    (with a build warning).
   - `featured.json` — the ~5 filenames shown in the home-page **Destaques** strip.
 - **`src/lib/`** — `site.ts` (`getSite()`); `galleryImages.ts` (`galleryImages` — resolves
   `src/data/gallery.json` against the files in `src/assets/gallery/`, in order, appending
@@ -66,7 +67,7 @@ Node 22 (`.nvmrc`). No test suite. No linter configured.
 ## Common tasks
 
 - **Add artwork (full gallery):** drop an image file in `src/assets/gallery/`
-  (`.png/.jpg/.webp/.avif`). It appears at the end of the gallery until you place it —
+  (`.png/.jpg/.webp/.avif`). It appears at the top of the gallery until you place it —
   filenames don't affect order. Position it with `npm run gallery` (interactive) or by
   moving its line in `src/data/gallery.json`.
 - **Remove artwork:** delete the file (and its line in `src/data/gallery.json`).
