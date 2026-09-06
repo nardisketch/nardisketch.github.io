@@ -279,27 +279,37 @@ h1 {
 }
 
 .featured-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  max-width: 1040px;
   margin: 0 auto;
+}
+
+/* 3 per row → the 5 featured images land as 3 on top, 2 (centered) below */
+.featured-grid .gallery-item {
+  flex: 0 0 calc((100% - 2 * 18px) / 3);
+  aspect-ratio: 3 / 4; /* uniform frame, a touch taller than the source crops */
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .featured-grid img {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  object-fit: cover;
+  display: block;
   transition: transform 0.3s ease;
-}
-
-/* Optional: let a featured image span 2 columns */
-.span-2 {
-  grid-column: span 2;
 }
 
 .featured-grid img:hover {
   transform: scale(1.03);
+}
+
+/* unused now (GalleryPreview emits no span) — kept for future manifest use */
+.span-2 {
+  grid-column: span 2;
 }
 
 .gallery-button {
@@ -335,12 +345,6 @@ h1 {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 
-@media (max-width: 900px) {
-  .featured-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
   .gallery {
     margin-top: 80px;
@@ -348,13 +352,10 @@ h1 {
   }
 }
 
-@media (max-width: 600px) {
-  .featured-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .span-2 {
-    grid-column: span 1;
+@media (max-width: 640px) {
+  /* 2 per row on phones (3 + 2 becomes 2 + 2 + 1) */
+  .featured-grid .gallery-item {
+    flex-basis: calc((100% - 18px) / 2);
   }
 }
 
