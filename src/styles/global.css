@@ -281,18 +281,26 @@ h1 {
 .featured-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 18px;
   max-width: 1040px;
   margin: 0 auto;
 }
 
-/* 3 per row → the 5 featured images land as 3 on top, 2 (centered) below */
 .featured-grid .gallery-item {
-  flex: 0 0 calc((100% - 2 * 18px) / 3);
-  aspect-ratio: 3 / 4; /* uniform frame, a touch taller than the source crops */
   overflow: hidden;
   border-radius: 8px;
+}
+
+/* top row: 3 portrait images, one third each */
+.featured-grid .gallery-item:nth-child(-n + 3) {
+  flex: 0 0 calc((100% - 2 * 18px) / 3);
+  aspect-ratio: 3 / 4;
+}
+
+/* bottom row: 2 landscape images, half each — spanning the full width */
+.featured-grid .gallery-item:nth-child(n + 4) {
+  flex: 0 0 calc((100% - 18px) / 2);
+  aspect-ratio: 1.64; /* matches the chosen landscape sources (~1528x929) */
 }
 
 .featured-grid img {
@@ -353,9 +361,12 @@ h1 {
 }
 
 @media (max-width: 640px) {
-  /* 2 per row on phones (3 + 2 becomes 2 + 2 + 1) */
-  .featured-grid .gallery-item {
+  /* portraits 2-up, landscapes full-width on phones */
+  .featured-grid .gallery-item:nth-child(-n + 3) {
     flex-basis: calc((100% - 18px) / 2);
+  }
+  .featured-grid .gallery-item:nth-child(n + 4) {
+    flex-basis: 100%;
   }
 }
 
