@@ -15,3 +15,39 @@ import { galleryImages } from '../lib/galleryImages';
     />
   ))}
 </div>
+
+<script>
+  // Row-major masonry: the grid fills left-to-right / top-to-bottom on its
+  // own; this only sets each image's row span from its aspect ratio so the
+  // rows pack tightly. Uses the width/height attributes Astro emits, so it
+  // doesn't wait for images to load.
+  const grid = document.querySelector<HTMLElement>('.masonry-gallery');
+  if (grid) {
+    const ROW = 8; // px — must match `grid-auto-rows` in lightbox.css
+    grid.classList.add('js-masonry');
+
+    const relayout = () => {
+      const rowGap = parseFloat(getComputedStyle(grid).rowGap) || 20;
+      grid.querySelectorAll('img').forEach((img) => {
+        const w = Number(img.getAttribute('width')) || img.naturalWidth || 1;
+        const h = Number(img.getAttribute('height')) || img.naturalHeight || 1;
+        const colW = img.getBoundingClientRect().width || grid.clientWidth;
+        const span = Math.ceil((colW * (h / w) + rowGap) / (ROW + rowGap));
+        img.style.gridRowEnd = `span ${span}`;
+      });
+    };
+
+    relayout();
+
+    let t: number;
+    window.addEventListener('resize', () => {
+      clearTimeout(t);
+      t = window.setTimeout(relayout, 150);
+    });
+
+    // defensive: recompute if any image lacked intrinsic dimensions up front
+    grid.querySelectorAll('img:not([width])').forEach((img) =>
+      img.addEventListener('load', relayout, { once: true }),
+    );
+  }
+</script>

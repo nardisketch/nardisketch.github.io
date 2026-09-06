@@ -24,22 +24,28 @@
   font-family: 'Cardo';
 }
 
-/* Masonry layout */
+/* Masonry layout.
+   CSS Grid (auto-flow: row) so images read left-to-right, top-to-bottom
+   (newest first). MasonryGallery.astro adds `.js-masonry` + a per-image
+   `grid-row-end: span N` from each image's aspect ratio to pack the rows
+   tightly. Without JS this is a plain aligned grid — every image, in order. */
 
 .masonry-gallery {
-  column-count: 4;
-  column-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.masonry-gallery.js-masonry {
+  grid-auto-rows: 8px;
 }
 
 .masonry-gallery img {
   width: 100%;
   height: auto;
-
-  margin-bottom: 20px;
+  display: block;
 
   border-radius: 10px;
-
-  break-inside: avoid;
 
   transition: transform 0.25s ease;
 
@@ -54,19 +60,19 @@
 
 @media (max-width: 1200px) {
   .masonry-gallery {
-    column-count: 3;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 800px) {
   .masonry-gallery {
-    column-count: 2;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 500px) {
   .masonry-gallery {
-    column-count: 1;
+    grid-template-columns: 1fr;
   }
 }
 
