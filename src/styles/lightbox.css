@@ -38,6 +38,8 @@
 
 .masonry-gallery.js-masonry {
   grid-auto-rows: 8px;
+  /* backfill the gaps left when a 2-column landscape wraps a row */
+  grid-auto-flow: row dense;
 }
 
 .masonry-gallery img {
