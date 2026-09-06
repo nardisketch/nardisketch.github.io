@@ -22,19 +22,21 @@ const listed = (order as string[]).filter((name) => {
   return false;
 });
 
+// Files not in the manifest go to the TOP (newest-first), so freshly dropped
+// artwork leads the gallery without editing gallery.json.
 const unlisted = [...byName.keys()]
   .filter((name) => !(order as string[]).includes(name))
-  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
 
 if (unlisted.length > 0) {
   console.warn(
     `\n[gallery] ${unlisted.length} image(s) not in src/data/gallery.json, ` +
-      `appended at the end:\n${unlisted.map((n) => `  - ${n}`).join('\n')}\n`,
+      `added at the top:\n${unlisted.map((n) => `  - ${n}`).join('\n')}\n`,
   );
 }
 
 /** Full gallery, in display order. `id` is the image's filename. */
-export const galleryImages: { id: string; image: ImageMetadata }[] = [...listed, ...unlisted].map(
+export const galleryImages: { id: string; image: ImageMetadata }[] = [...unlisted, ...listed].map(
   (name) => ({ id: name, image: byName.get(name)! }),
 );
 
