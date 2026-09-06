@@ -43,17 +43,17 @@ export default function Lightbox({ images }: { images: LightboxImage[] }) {
     [images.length],
   );
 
-  // Wire up the server-rendered thumbnails.
+  // Open on thumbnail click. Delegated from `document` so it doesn't depend on
+  // the gallery being in the DOM at any particular moment during hydration.
   useEffect(() => {
-    const thumbs = Array.from(
-      document.querySelectorAll<HTMLElement>('.masonry-gallery [data-index]'),
-    );
-    const bound = thumbs.map((el) => {
-      const fn = () => setOpenIndex(Number(el.dataset.index));
-      el.addEventListener('click', fn);
-      return () => el.removeEventListener('click', fn);
-    });
-    return () => bound.forEach((off) => off());
+    const onClick = (e: MouseEvent) => {
+      const el = (e.target as Element | null)?.closest<HTMLElement>(
+        '.masonry-gallery [data-index]',
+      );
+      if (el?.dataset.index != null) setOpenIndex(Number(el.dataset.index));
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
   }, []);
 
   // Reset zoom/pan on open and on navigation; lock page scroll while open.

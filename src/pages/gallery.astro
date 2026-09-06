@@ -28,5 +28,5 @@ const images = await Promise.all(
     <MasonryGallery />
   </section>
 
-  <Lightbox client:idle images={images} />
+  <Lightbox client:load images={images} />
 </BaseLayout>
